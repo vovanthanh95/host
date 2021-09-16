@@ -36,7 +36,7 @@ $(document).ready(function(){
   <script type="text/javascript">
   new TradingView.widget(
   {
-  "width": 980,
+  "width": 900,
   "height": 610,
   "symbol": "BINANCE:BTCUSDT",
   "interval": "D",
