@@ -7,20 +7,15 @@ class Home extends Controller {
 
     function hello() {
         $a = $this->model("Hello");
-        $b = $this->view("LayoutMain",["content"=>"Hello","sub-menu"=>"Login"]);
+        $b = $this->view("Main",["content"=>"Hello","sub-menu"=>"Login"]);
     }
 
-    function abc() {
-        $a = $this->model("Hello");
-
-        $b = $this->view("LayoutMain",["content"=>"Abc"]);
-    }
     function login(){
-        $v = $this->view("LayoutMain",["content"=>"Login"]);
+        $v = $this->view("Main",["content"=>"Login"]);
     }
 
     function signUp(){
-        $v = $this->view("LayoutMain",["content"=>"Server","sub-menu"=>"Login"]);
+        $v = $this->view("Main",["content"=>"SignUp","sub-menu"=>"Login"]);
     }
 }
 

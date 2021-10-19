@@ -17,4 +17,3 @@ class Hello extends DB {
 
 }
 ?>
-
