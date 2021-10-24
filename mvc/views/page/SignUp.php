@@ -8,6 +8,8 @@
     <div class="mb-3">
         <label class="form-label">Email address</label>
         <input type="email" class="form-control" id="Email" name="Email">
+        <div id="resultEmail">
+        </div>
     </div>
     <div class="mb-3">
         <label id="ss" class="form-label">Password</label>

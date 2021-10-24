@@ -7,7 +7,11 @@ class Home extends Controller {
 
     function hello() {
         $a = $this->model("Hello");
-        $b = $this->view("Main",["content"=>"Hello","sub-menu"=>"Login"]);
+        $v = "Login";
+        if(isset($_SESSION["user_email"])){
+          $v = "sub-menu";
+        }
+        $b = $this->view("Main",["content"=>"Hello","sub-menu"=>$v]);
     }
 
     function login(){
