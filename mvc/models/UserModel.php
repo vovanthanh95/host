@@ -3,7 +3,7 @@
 //kiểm tra tên người dùng có tồn tại trong database hay không
 class UserModel extends DB
 {
-    //check user
+    //check user ajax
     public function checkUserModel($user)
     {
         $qr = "SELECT * FROM user WHERE username = '$user'";
@@ -13,8 +13,9 @@ class UserModel extends DB
         } else {
             echo "có thể dùng";
         }
+        mysqli_close($this->conn);
     }
-    //check email
+    //check email ajax
     public function checkEmailModel($email)
     {
         $qr = "SELECT * FROM user WHERE email = '$email'";
@@ -24,6 +25,7 @@ class UserModel extends DB
         } else {
             echo "có thể dùng";
         }
+        mysqli_close($this->conn);
     }
     //thêm user mới
     public function insertUser($username, $email, $password)
@@ -33,6 +35,7 @@ class UserModel extends DB
         if($result){
           $_SESSION["user_email"] = $email;
         }
+        mysqli_close($this->conn);
     }
 
     // kiểm tra đăng nhập
@@ -54,6 +57,7 @@ class UserModel extends DB
         } else {
             return false;
         }
+        mysqli_close($this->conn);
 
     }
 }
