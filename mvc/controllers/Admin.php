@@ -5,15 +5,19 @@ class Admin extends Controller
     public function __construct()
     {
     }
-
-    public function hello()
+    public function Index()
     {
-        $b = $this->view("Admin", ["content"=> "AdminCategory"]);
+        $b = $this->view("Admin", ["content"=> "AdminLogin"]);
     }
 
     public function Category()
     {
-        $b = $this->view("Admin", ["content"=> "AdminCategory"]);
+      if (isset($_SESSION["user_email"])&&isset($_SESSION["user_email"])&& $_SESSION["level"]== 1) {
+          $b = $this->view("Admin", ["content"=> "AdminCategory"]);
+      }else{
+        header('Location: http://google.com/');
+      }
+
     }
     public function Product()
     {
@@ -43,5 +47,18 @@ class Admin extends Controller
     {
         $a = $this->model("AdminAjax");
         $a->addCategory($_POST["name_category"]);
+    }
+
+    //ajax check name category
+    public function checkNameCategory()
+    {
+        $a = $this->model("AdminAjax");
+        $a->checkNameCategory($_POST["name"]);
+    }
+    //ajax check login admin
+    public function adminLogin()
+    {
+        $a = $this->model("AdminAjax");
+        $a->adminLogin($_POST['name'],$_POST['pass']);
     }
 }

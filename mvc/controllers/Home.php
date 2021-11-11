@@ -6,7 +6,7 @@ class Home extends Controller
     {
     }
 
-    public function hello()
+    public function Index()
     {
         $a = $this->model("Hello");
         $v = "Login";

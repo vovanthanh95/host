@@ -54,4 +54,35 @@ class AdminAjax extends DB
           echo "sửa thất bại";
       }
     }
+    //check category name ajax
+    public function checkNameCategory($name)
+    {
+        $qr = "SELECT * FROM category WHERE category = '$name'";
+        $result = mysqli_query($this->conn, $qr);
+        if (mysqli_num_rows($result) > 0) {
+            echo "danh mục đã tồn tại";
+        } else {
+            echo "danh mục hợp lệ";
+        }
+        mysqli_close($this->conn);
+    }
+
+    //admin check Login ajax
+    public function adminLogin($useremail, $pass ){
+      $qr = "SELECT * FROM user WHERE username = '$useremail'";
+      $result = mysqli_query($this->conn, $qr);
+      if (mysqli_num_rows($result) > 0) {
+          $row = $result->fetch_assoc();
+          if (password_verify($pass, $row['password']) && $row['level']== 0 ) {
+              $_SESSION["user_email"] = $useremail;
+              $_SESSION["level"] = $row['level'];
+              header('Location: ./../mvc/Admin/adminLogin');
+          } else {
+              echo "tên hoặc mật khẩu không đúng";
+          }
+      } else {
+          echo "tên hoặc mật khẩu không đúng";
+      }
+      mysqli_close($this->conn);
+    }
 }

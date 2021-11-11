@@ -1,0 +1,248 @@
+
+/* css bảng thêm danh mục */
+div .category-content{
+  position: relative;
+  margin-left: 10px;
+  margin-right: 20px;
+  padding-top:10px;
+}
+.add-group{
+  background-color: #e7e9e8f5;
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  z-index: 1;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  display: none;
+}
+.add-title{
+  font-weight: bold;
+  background-color: #007bff;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.add-action button{
+  margin-bottom: 10px;
+  margin-top: 15px;
+  display: inline-block;
+
+}
+.add-action{
+  position: relative;
+}
+.btn-add{
+  left: 5%;
+  position: relative;
+}
+.btn-cancell{
+  left: 15%;
+  position: relative;
+}
+.add-content{
+  position: relative;
+}
+.add-content input{
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  color: #007bff;
+  background-color: #e7e9e8f5;
+  padding: 10px 15px;
+  display: inline-block;
+  width: 90%;
+}
+.add-content label{
+  color: gray;
+  top: 50%;
+  left: calc(5% + 15px);
+  transform: translateY(-50%);
+  position: absolute;
+  user-select: none;
+  transition: 0.25s ease;
+}
+.add-content input:not(:placeholder-shown) + label,
+.add-content input:focus + label{
+  padding: 0px 3px;
+  color: #007bff;
+  top: 0;
+  left: calc(5% + 15px - 3px);
+  background-color: #e7e9e8f5;
+}
+.add-content input:focus{
+  outline: none;
+}
+.add-group .add-content{
+  text-align: center;
+}
+
+.add-error{
+  margin-left: 5%;
+}
+/* edit group */
+
+.edit-group{
+  background-color: #e7e9e8f5;
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  z-index: 1;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  display: none;
+}
+.edit-title{
+  font-weight: bold;
+  background-color: #007bff;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.edit-action button{
+  margin-bottom: 10px;
+  margin-top: 15px;
+  display: inline-block;
+
+}
+.edit-action{
+  position: relative;
+}
+.edit-btn-add{
+  left: 5%;
+  position: relative;
+}
+.edit-btn-cancell{
+  left: 15%;
+  position: relative;
+}
+.edit-content{
+  position: relative;
+}
+.edit-content input{
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  color: #007bff;
+  background-color: #e7e9e8f5;
+  padding: 10px 15px;
+  display: inline-block;
+  width: 90%;
+}
+.edit-content label{
+  color: gray;
+  top: 50%;
+  left: calc(5% + 15px);
+  transform: translateY(-50%);
+  position: absolute;
+  user-select: none;
+  transition: 0.25s ease;
+}
+.edit-content input:not(:placeholder-shown) + label,
+.edit-content input + label{
+  padding: 0px 3px;
+  color: #007bff;
+  top: 0;
+  left: calc(5% + 15px - 3px);
+  background-color: #e7e9e8f5;
+}
+.edit-content input:focus{
+  outline: none;
+}
+.edit-group .edit-content{
+  text-align: center;
+}
+
+.edit-error{
+  margin-left: 5%;
+}
+/* css table */
+
+.category-table, .category-table td, .category-table th, .category-table thead th{
+  border: 1px solid #007bff;
+}
+.category-table button{
+  margin-left: 10px;
+}
+.dataTables_length select, .dataTables_filter input, .dataTables_filter input:focus{
+  border: 1px solid #007bff;
+}
+.no-footer{
+  margin-top: 25px;
+}
+/* admin login form */
+.admin-login{
+  position: relative;
+}
+.login-group{
+  background-color: #e7e9e8f5;
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  z-index: 1;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+}
+.login-title{
+  font-weight: bold;
+  background-color: #007bff;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.login-content input{
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  color: #007bff;
+  background-color: #e7e9e8f5;
+  padding: 10px 15px;
+  display: inline-block;
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.login-content label{
+  color: gray;
+  top: 50%;
+  left: calc(5% + 15px);
+  transform: translateY(-50%);
+  position: absolute;
+  user-select: none;
+  transition: 0.25s ease;
+}
+.login-content input:not(:placeholder-shown) + label,
+.login-content input:focus + label{
+  padding: 0px 3px;
+  color: #007bff;
+  top: 10px;
+  left: calc(5% + 15px - 3px);
+  background-color: #e7e9e8f5;
+}
+.login-content input:focus{
+  outline: none;
+}
+.login-user, .login-password{
+  position: relative;
+}
+.login-content{
+  text-align: center;
+}
+.btn-login{
+  margin-bottom: 10px;
+}
+.login-action{
+  text-align: center;
+}
