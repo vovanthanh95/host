@@ -153,6 +153,12 @@
           </div>
         </li>
       </ul>
+      <!-- logout -->
+      <?php if(isset($_SESSION['user-email'])){
+        echo '<a  class="admin-logout" id="admin-logout"  href="./logout">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>';
+      } ?>
     </nav>
     <!-- /.navbar -->
 
@@ -161,7 +167,7 @@
       <!-- Brand Logo -->
       <a href="#" class="brand-link">
         <img src="<?php $_SERVER ['DOCUMENT_ROOT']; ?>/mvc/public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin</span>
+        <span class="brand-text font-weight-light">QTI</span>
       </a>
 
       <!-- Sidebar -->
@@ -172,7 +178,13 @@
             <img src="<?php $_SERVER ['DOCUMENT_ROOT']; ?>/mvc/public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Vo van thanh</a>
+            <a href="#" class="d-block">
+              <?php if(isset($_SESSION['user-email'])){
+                echo $_SESSION['user-email'];
+              }else{
+                echo "khách";
+              } ?>
+            </a>
           </div>
         </div>
 

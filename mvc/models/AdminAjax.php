@@ -19,6 +19,16 @@ class AdminAjax extends DB
         }
         echo json_encode($data);
     }
+    public function getDataProduct()
+    {
+        $data = array();
+        $qr = "SELECT * FROM product";
+        $result = mysqli_query($this->conn, $qr);
+        while ($row = mysqli_fetch_array($result)) {
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
     public function deleteCategory($idcategory)
     {
         $qr ="DELETE FROM category WHERE id = $idcategory";
@@ -74,9 +84,9 @@ class AdminAjax extends DB
       if (mysqli_num_rows($result) > 0) {
           $row = $result->fetch_assoc();
           if (password_verify($pass, $row['password']) && $row['level']== 0 ) {
-              $_SESSION["user_email"] = $useremail;
+              $_SESSION["user-email"] = $useremail;
               $_SESSION["level"] = $row['level'];
-              header('Location: ./../mvc/Admin/adminLogin');
+              echo "1";
           } else {
               echo "tên hoặc mật khẩu không đúng";
           }

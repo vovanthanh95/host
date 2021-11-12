@@ -20,6 +20,7 @@ div .category-content{
   border: 1px solid #007bff;
   border-radius: 4px;
   display: none;
+  pointer-events: auto;
 }
 .add-title{
   font-weight: bold;
@@ -64,6 +65,7 @@ div .category-content{
   transform: translateY(-50%);
   position: absolute;
   user-select: none;
+  pointer-events: none;
   transition: 0.25s ease;
 }
 .add-content input:not(:placeholder-shown) + label,
@@ -100,6 +102,7 @@ div .category-content{
   border: 1px solid #007bff;
   border-radius: 4px;
   display: none;
+  pointer-events: auto;
 }
 .edit-title{
   font-weight: bold;
@@ -144,6 +147,7 @@ div .category-content{
   transform: translateY(-50%);
   position: absolute;
   user-select: none;
+  pointer-events: none;
   transition: 0.25s ease;
 }
 .edit-content input:not(:placeholder-shown) + label,
@@ -221,6 +225,7 @@ div .category-content{
   transform: translateY(-50%);
   position: absolute;
   user-select: none;
+  pointer-events: none;
   transition: 0.25s ease;
 }
 .login-content input:not(:placeholder-shown) + label,
@@ -245,4 +250,63 @@ div .category-content{
 }
 .login-action{
   text-align: center;
+}
+.admin-logout{
+  margin-left: 20px;
+}
+.login-error{
+  margin-left: 5%;
+  color: red;
+}
+.dis-content{
+  pointer-events: none;
+}
+/* alert remove */
+.remove-group{
+  background-color: #e7e9e8f5;
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  z-index: 1;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  display: none;
+  pointer-events: auto;
+}
+.remove-title{
+  font-weight: bold;
+  background-color: #007bff;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.remove-action{
+  position: relative;
+}
+.remove-btn-delete{
+  left: 5%;
+  position: relative;
+}
+.remove-btn-cancell{
+  left: 15%;
+  position: relative;
+}
+.remove-content{
+  padding-top: 20px;
+  position: relative;
+}
+.remove-action button{
+  margin-bottom: 10px;
+  margin-top: 30px;
+  display: inline-block;
+}
+.remove-content label{
+  left: 5%;
+  transform: translateY(-50%);
+  position: absolute;
 }

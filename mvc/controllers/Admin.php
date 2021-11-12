@@ -12,10 +12,10 @@ class Admin extends Controller
 
     public function Category()
     {
-      if (isset($_SESSION["user_email"])&&isset($_SESSION["user_email"])&& $_SESSION["level"]== 1) {
+      if (isset($_SESSION["user-email"]) && isset($_SESSION["level"])) {
           $b = $this->view("Admin", ["content"=> "AdminCategory"]);
       }else{
-        header('Location: http://google.com/');
+        header('Location: ./../Admin');
       }
 
     }
@@ -28,6 +28,12 @@ class Admin extends Controller
     {
         $a = $this->model("AdminAjax");
         $a->getDataCategory();
+    }
+    //ajax load data table product
+    public function AjaxProduct()
+    {
+        $a = $this->model("AdminAjax");
+        $a->getDataProduct();
     }
     //ajax edit category
     public function editCategory()
@@ -60,5 +66,11 @@ class Admin extends Controller
     {
         $a = $this->model("AdminAjax");
         $a->adminLogin($_POST['name'],$_POST['pass']);
+    }
+    //logout admin
+    public function logout()
+    {
+        session_destroy();
+        header("Location: http://localhost/mvc/Admin");
     }
 }

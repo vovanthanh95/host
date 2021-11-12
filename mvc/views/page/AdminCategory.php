@@ -1,23 +1,20 @@
-<!-- <button class="btn btn-primary" id="btn-add-category"><i class="fas fa-plus-circle"></i></button>
-<div class="card card-primary" id="form_edit_category" style="display:none">
-  <div class="card-header">
-    <h3 class="card-title">SỬA DANH MỤC</h3>
-  </div>
-  <div class="card-body">
-    <div class="form-group">
-      <label>Tên danh mục</label>
-      <input type="text" class="form-control" id="name_edit_category">
+<div class="category-content">
+  <!-- ------------------alert--------------------------------------------------------------- -->
+  <div class="remove-group" id="remove-group-category">
+    <div class="remove-title">
+      <p>thông báo</p>
+    </div>
+    <div class="remove-content">
+      <label id="remove-content"></label>
+    </div>
+    <div class="remove-error">
+      <p id="remove-error"></p>
+    </div>
+    <div class="remove-action">
+      <button class="btn btn-outline-success remove-btn-delete" id="remove-success-category" type="button" name="button">Xóa</button>
+      <button class="btn btn-outline-danger remove-btn-cancell" id="remove-cancel-category" type="button" name="button">Hủy</button>
     </div>
   </div>
-  <div class="card-footer">
-    <button class="btn btn-primary" id="success_edit_category">Sửa</button>
-    <button class="btn btn-primary" id="cancel_edit_category">Hủy</button>
-  </div>
-</div> -->
-
-
-<!-- --------------------------------------------------------------------------------- -->
-<div class="category-content">
   <!-- --------------------------------------------------------------------------------- -->
   <div class="edit-group" id="edit-group-category">
     <div class="edit-title">
