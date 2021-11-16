@@ -73,4 +73,10 @@ class Admin extends Controller
         session_destroy();
         header("Location: http://localhost/mvc/Admin");
     }
+    //ajax upload image product
+    public function addProduct()
+    {
+        $a = $this->model("AdminAjax");
+        $a->addProduct();
+    }
 }

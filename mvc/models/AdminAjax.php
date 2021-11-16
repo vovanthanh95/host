@@ -22,7 +22,7 @@ class AdminAjax extends DB
     public function getDataProduct()
     {
         $data = array();
-        $qr = "SELECT * FROM product";
+        $qr = "SELECT * FROM product, category WHERE product.productcategory = category.id";
         $result = mysqli_query($this->conn, $qr);
         while ($row = mysqli_fetch_array($result)) {
             $data[] = $row;
@@ -94,5 +94,21 @@ class AdminAjax extends DB
           echo "tên hoặc mật khẩu không đúng";
       }
       mysqli_close($this->conn);
+    }
+
+    //upload image product AjaxProduct
+    public function addProduct(){
+      $qr = "SELECT MAX(id) FROM product";
+      $result = mysqli_query($this->conn, $qr);
+      $row = $result->fetch_assoc();
+      $ext = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+      if(isset($_FILES['file'])) {
+                    $path= "./../mvc/public/images/products/".++$row['MAX(id)'].".".$ext;
+                    $flag = move_uploaded_file($_FILES["file"]["tmp_name"],$path);
+                    if($flag) {
+                      echo "thêm thành công";
+                    }
+                    return $flag;
+                }
     }
 }

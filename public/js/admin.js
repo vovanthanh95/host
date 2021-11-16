@@ -202,7 +202,7 @@ $("#login-pass").click(function(){
     $("#login-error").text("");
     })
 //----------------------------------product----------------------------------------------------
-//load data table category---------------------------------------------------
+//load data table product---------------------------------------------------
   var product = $("#product-table").DataTable({
     "scrollX": false,
     "ajax": {
@@ -238,9 +238,10 @@ $("#login-pass").click(function(){
     "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
     "columns": [
     {"data":null,"title": "STT"},
-    {"data":"productname","title": "DANH MỤC"},
-    {"data":"productprice","title": "NGÀY TẠO"},
-    {"data":"productcategory","title": "NGÀY SỬA"},
+    {"data":"productname","title": "TÊN SẢN PHẨM"},
+    {"data":"productprice","title": "GIÁ"},
+    {"data":"category","title": "HÃNG"},
+    {"data":"productquantity","title": "SỐ LƯỢNG"},
     {
      "data": null,
      "mRender": function (row) { return '<button class="btn btn-outline-success btn-sm" onclick="editCategory('+ row.id + ',\'' + row.productname + '\')"> Sửa </button><button class="btn btn-outline-danger btn-sm" onclick="deleteCategory('+ row.id +',\'' + row.productname + '\')"> Xóa </button>'; }
@@ -253,6 +254,27 @@ product.on( 'order.dt search.dt', function () {
         cell.innerHTML = i+1;
     } );
 } ).draw();
+
+$("#success-product").click(function(){
+  let file = $("#image-product")[0].files[0];
+  let form = new FormData();
+  form.append("file",file);
+  $.ajax({
+              url: "./../Admin/addProduct",
+              type: "POST",
+              processData: false,
+              mimeType: "multipart/form-data",
+              contentType: false,
+              data: form,
+              success: function (result) {
+                  console.log(result);
+              },
+              error: function (e) {
+                  console.log(e);
+              }
+          });
+
+});
 //----------------------------------product----------------------------------------------------
 //-------------------ready function------------------------------------------------------------------
 });

@@ -1,6 +1,6 @@
 
 /* css bảng thêm danh mục */
-div .category-content{
+div .category-content, div .product-content{
   position: relative;
   margin-left: 10px;
   margin-right: 20px;
@@ -169,7 +169,7 @@ div .category-content{
   margin-left: 5%;
 }
 /* css table */
-
+.product-table, .product-table td, .product-table th, .product-table thead th,
 .category-table, .category-table td, .category-table th, .category-table thead th{
   border: 1px solid #007bff;
 }
@@ -309,4 +309,176 @@ div .category-content{
   left: 5%;
   transform: translateY(-50%);
   position: absolute;
+}
+/* form add product */
+.add-group-product{
+  background-color: #e7e9e8f5;
+  width: 60%;
+  min-width: 300px;
+  max-width: 800px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  z-index: 5;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+
+  pointer-events: auto;
+}
+.add-title-product{
+  font-weight: bold;
+  background-color: #007bff;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.add-action-product button{
+  margin-bottom: 10px;
+  margin-top: 15px;
+  display: inline-block;
+
+}
+.add-action-product{
+  position: relative;
+}
+.btn-add-product{
+  left: 5%;
+  position: relative;
+}
+.btn-cancell-product{
+  left: 15%;
+  position: relative;
+}
+.add-content-product{
+  margin-top: 13px;
+  margin-bottom: 13px;
+  position: relative;
+}
+.add-content-product input{
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  color: #007bff;
+  background-color: #e7e9e8f5;
+  padding: 10px 15px;
+  display: inline-block;
+  width: 45%;
+}
+.add-content-product .imagex-product{
+  width: 90% !important;
+}
+.image-product{
+  display: none !important;
+}
+.add-content-product .label-name, .add-content-product .label-quantity
+{
+  color: gray;
+  top: 50%;
+  left: calc(5% + 15px);
+  transform: translateY(-50%);
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+.add-content-product .label-image
+{
+  color: gray;
+  top: 50%;
+  left: calc(5% + 15px);
+  transform: translateY(-50%);
+  position: absolute;
+  transition: 0.25s ease;
+}
+.add-content-product .label-image:active + .add-content-product .label-image1{
+  color: red;
+}
+.add-content-product .label-image1
+{
+  color: gray;
+  top: 50%;
+  left: calc(5% + 15px);
+  transform: translateY(-50%);
+  position: absolute;
+  transition: 0.25s ease;
+}
+
+.add-content-product input:not(:placeholder-shown) + .label-name,
+.add-content-product input:not(:placeholder-shown) + .label-quantity,
+.add-content-product input:focus + .label-quantity,
+.add-content-product input:focus + .label-name{
+  padding: 0px 3px;
+  color: #007bff;
+  top: 0;
+  left: calc(5% + 15px - 3px);
+  background-color: #e7e9e8f5;
+}
+.add-content-product input:not(:placeholder-shown) + .label-price,
+.add-content-product input:focus + .label-price{
+  padding: 0px 3px;
+  color: #007bff;
+  top: 0;
+  left: calc(5% + 15px + 45%);
+  background-color: #e7e9e8f5;
+}
+.add-content-product input:focus, .add-content-product select:focus{
+  outline: none;
+}
+.add-group-product .add-content-product{
+  text-align: center;
+}
+.add-content-product textarea{
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  color: #007bff;
+  width: 90%;
+  min-height: 50px;
+  padding: 10px 15px;
+  background-color: #e7e9e8f5;
+}
+.add-content-product textarea:focus{
+  outline: none;
+}
+.add-error-product{
+  margin-left: 5%;
+}
+.add-content-product textarea:not(:placeholder-shown) + .label-description,
+.add-content-product textarea:not(:placeholder-shown) + .label-other,
+.add-content-product textarea:focus + .label-description,
+.add-content-product textarea:focus + .label-other{
+  padding: 0px 3px;
+  color: #007bff;
+  top: 0;
+  left: calc(5% + 15px - 3px);
+  background-color: #e7e9e8f5;
+}
+.add-content-product select{
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  color: #007bff;
+  background-color: #e7e9e8f5;
+  padding: 10px 15px;
+  display: inline-block;
+  width: 45%;
+}
+.add-content-product .label-price{
+  color: gray;
+  top: 50%;
+  left: calc(5% + 45% + 17px);
+  transform: translateY(-50%);
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+.label-description, .label-other{
+color: gray;
+top: 50%;
+left: calc(5% + 15px);
+transform: translateY(-50%);
+position: absolute;
+user-select: none;
+pointer-events: none;
+transition: 0.25s ease;
 }
