@@ -311,36 +311,36 @@ div .category-content, div .product-content{
   position: absolute;
 }
 /* form add product */
-.add-group-product{
+.group-product{
   background-color: #e7e9e8f5;
   width: 60%;
   min-width: 300px;
   max-width: 800px;
   height: auto;
-  position: absolute;
+  position: fixed;
   left: 50%;
-  top: 20px;
+  top: 10%;
   transform: translateX(-50%);
   z-index: 5;
   border: 1px solid #007bff;
   border-radius: 4px;
-
+  display: none;
   pointer-events: auto;
 }
-.add-title-product{
+.title-product{
   font-weight: bold;
   background-color: #007bff;
   text-align: center;
   color: white;
   font-size: 20px;
 }
-.add-action-product button{
+.action-product button{
   margin-bottom: 10px;
   margin-top: 15px;
   display: inline-block;
 
 }
-.add-action-product{
+.action-product{
   position: relative;
 }
 .btn-add-product{
@@ -351,12 +351,12 @@ div .category-content, div .product-content{
   left: 15%;
   position: relative;
 }
-.add-content-product{
+.content-product{
   margin-top: 13px;
   margin-bottom: 13px;
   position: relative;
 }
-.add-content-product input{
+.content-product input{
   border: 1px solid #007bff;
   border-radius: 4px;
   color: #007bff;
@@ -365,13 +365,13 @@ div .category-content, div .product-content{
   display: inline-block;
   width: 45%;
 }
-.add-content-product .imagex-product{
+.content-product .imagex-product{
   width: 90% !important;
 }
 .image-product{
   display: none !important;
 }
-.add-content-product .label-name, .add-content-product .label-quantity
+.content-product .label-name, .content-product .label-quantity
 {
   color: gray;
   top: 50%;
@@ -382,7 +382,7 @@ div .category-content, div .product-content{
   pointer-events: none;
   transition: 0.25s ease;
 }
-.add-content-product .label-image
+.content-product .label-image
 {
   color: gray;
   top: 50%;
@@ -391,10 +391,10 @@ div .category-content, div .product-content{
   position: absolute;
   transition: 0.25s ease;
 }
-.add-content-product .label-image:active + .add-content-product .label-image1{
+.content-product .label-image:active + .content-product .label-image1{
   color: red;
 }
-.add-content-product .label-image1
+.content-product .label-image1
 {
   color: gray;
   top: 50%;
@@ -404,31 +404,31 @@ div .category-content, div .product-content{
   transition: 0.25s ease;
 }
 
-.add-content-product input:not(:placeholder-shown) + .label-name,
-.add-content-product input:not(:placeholder-shown) + .label-quantity,
-.add-content-product input:focus + .label-quantity,
-.add-content-product input:focus + .label-name{
+.content-product input:not(:placeholder-shown) + .label-name,
+.content-product input:not(:placeholder-shown) + .label-quantity,
+.content-product input:focus + .label-quantity,
+.content-product input:focus + .label-name{
   padding: 0px 3px;
   color: #007bff;
   top: 0;
   left: calc(5% + 15px - 3px);
   background-color: #e7e9e8f5;
 }
-.add-content-product input:not(:placeholder-shown) + .label-price,
-.add-content-product input:focus + .label-price{
+.content-product input:not(:placeholder-shown) + .label-price,
+.content-product input:focus + .label-price{
   padding: 0px 3px;
   color: #007bff;
   top: 0;
   left: calc(5% + 15px + 45%);
   background-color: #e7e9e8f5;
 }
-.add-content-product input:focus, .add-content-product select:focus{
+.content-product input:focus, .content-product select:focus{
   outline: none;
 }
-.add-group-product .add-content-product{
+.group-product .content-product{
   text-align: center;
 }
-.add-content-product textarea{
+.content-product textarea{
   border: 1px solid #007bff;
   border-radius: 4px;
   color: #007bff;
@@ -437,23 +437,23 @@ div .category-content, div .product-content{
   padding: 10px 15px;
   background-color: #e7e9e8f5;
 }
-.add-content-product textarea:focus{
+.content-product textarea:focus{
   outline: none;
 }
-.add-error-product{
+.error-product{
   margin-left: 5%;
 }
-.add-content-product textarea:not(:placeholder-shown) + .label-description,
-.add-content-product textarea:not(:placeholder-shown) + .label-other,
-.add-content-product textarea:focus + .label-description,
-.add-content-product textarea:focus + .label-other{
+.content-product textarea:not(:placeholder-shown) + .label-description,
+.content-product textarea:not(:placeholder-shown) + .label-other,
+.content-product textarea:focus + .label-description,
+.content-product textarea:focus + .label-other{
   padding: 0px 3px;
   color: #007bff;
   top: 0;
   left: calc(5% + 15px - 3px);
   background-color: #e7e9e8f5;
 }
-.add-content-product select{
+.content-product select{
   border: 1px solid #007bff;
   border-radius: 4px;
   color: #007bff;
@@ -462,7 +462,7 @@ div .category-content, div .product-content{
   display: inline-block;
   width: 45%;
 }
-.add-content-product .label-price{
+.content-product .label-price{
   color: gray;
   top: 50%;
   left: calc(5% + 45% + 17px);
@@ -481,4 +481,9 @@ position: absolute;
 user-select: none;
 pointer-events: none;
 transition: 0.25s ease;
+}
+.img-product{
+  width: 150px;
+  border: 1px #007bff solid;
+  border-radius: 10px;
 }

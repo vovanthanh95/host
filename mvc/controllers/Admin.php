@@ -12,15 +12,13 @@ class Admin extends Controller
 
     public function Category()
     {
-      if (isset($_SESSION["user-email"]) && isset($_SESSION["level"])) {
-          $b = $this->view("Admin", ["content"=> "AdminCategory"]);
-      }else{
-        header('Location: ./../Admin');
-      }
+        $this->authAdmin("./../Admin");
+        $b = $this->view("Admin", ["content"=> "AdminCategory"]);
 
     }
     public function Product()
     {
+        $this->authAdmin("./../Admin");
         $b = $this->view("Admin", ["content"=> "AdminProduct"]);
     }
     //ajax load data table category
@@ -78,5 +76,22 @@ class Admin extends Controller
     {
         $a = $this->model("AdminAjax");
         $a->addProduct();
+    }
+    //ajax delete product
+    public function deleteProduct()
+    {
+      $a = $this->model("AdminAjax");
+      $a->deleteProduct($_POST["idproduct"]);
+    }
+    //ajax edit product
+    public function editProduct()
+    {
+      $a = $this->model("AdminAjax");
+      $a->editProduct();
+    }
+    //ajax get product by id
+    public function getProductById(){
+      $a = $this->model("AdminAjax");
+      $a->getProductById($_POST["id"]);
     }
 }

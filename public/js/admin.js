@@ -243,8 +243,12 @@ $("#login-pass").click(function(){
     {"data":"category","title": "HÃNG"},
     {"data":"productquantity","title": "SỐ LƯỢNG"},
     {
+     "data": null,"title": "HÌNH ẢNH",
+     "mRender": function (rowx) { return '<img class="img-product" src="./../public/images/products/' + rowx.productimage + '">'; }
+   },
+    {
      "data": null,
-     "mRender": function (row) { return '<button class="btn btn-outline-success btn-sm" onclick="editCategory('+ row.id + ',\'' + row.productname + '\')"> Sửa </button><button class="btn btn-outline-danger btn-sm" onclick="deleteCategory('+ row.id +',\'' + row.productname + '\')"> Xóa </button>'; }
+     "mRender": function (rowx) { return '<button class="btn btn-outline-success btn-sm" onclick="editProduct('+ rowx.id + ',\'' + rowx.productname + '\')"> Sửa </button><button class="btn btn-outline-danger btn-sm" onclick="deleteProduct('+ rowx.id +',\'' + rowx.productname + '\')"> Xóa </button>'; }
    }
  ]
 });
@@ -254,27 +258,185 @@ product.on( 'order.dt search.dt', function () {
         cell.innerHTML = i+1;
     } );
 } ).draw();
-
-$("#success-product").click(function(){
-  let file = $("#image-product")[0].files[0];
-  let form = new FormData();
-  form.append("file",file);
+//load data select option
+$("#btn-add-product").click(function(){
+  $("#success-product").text("Thêm");
+  $("#group-product").show();
+  $("#group-product").attr("option", "add");
   $.ajax({
-              url: "./../Admin/addProduct",
-              type: "POST",
-              processData: false,
-              mimeType: "multipart/form-data",
-              contentType: false,
-              data: form,
-              success: function (result) {
-                  console.log(result);
-              },
-              error: function (e) {
-                  console.log(e);
-              }
-          });
+    url:"./../Admin/AjaxCategory",
+    type: "post",
+    dataType: "text",
+    success: function(result){
+      let data = JSON.parse(result);
+      $.each(data, function (i, data) {
+    $("#seclect-category").append($("<option>", {
+        value: data.id,
+        text : data.category
+    }));
+});
+    }
+  });
+
 
 });
+$("#success-product").click(function(){
+  let action = $("#group-product").attr("option");
+  if(action == "add"){
+    let file = $("#image-product")[0].files[0];
+    let form = new FormData();
+    form.append("file",file);
+    let name = $("#name-product").val();
+    let price = $("#price-product").val();
+    let quantity = $("#quantity-product").val();
+    let description = $("#description-product").val();
+    let other = $("#other-product").val();
+    let idcategory = $("#seclect-category option").filter(':selected').val();
+    form.append("name",name);
+    form.append("price",price);
+    form.append("quantity",quantity);
+    form.append("description",description);
+    form.append("other",other);
+    form.append("idcategory",idcategory);
+    $.ajax({
+                url: "./../Admin/addProduct",
+                type: "POST",
+                processData: false,
+                mimeType: "multipart/form-data",
+                contentType: false,
+                data: form,
+                success: function (result) {
+                    console.log(result);
+                    $("#group-product").hide();
+                    $("#product-table").DataTable().ajax.reload();
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+  }
+
+
+});
+
 //----------------------------------product----------------------------------------------------
+
+
 //-------------------ready function------------------------------------------------------------------
 });
+
+
+//delete button table Product--------------------------------------------------------------------------------
+function deleteProduct(id,product){
+  $("#remove-group-product").show();
+  $("body").addClass("dis-content");
+  $("#remove-content").text('bạn có muốn xóa ' + product + ' không');
+  $("#remove-success-product").click(function(){
+    $.ajax({
+      url: "./../Admin/deleteProduct",
+      type: "post",
+      datatype: "text",
+      data: {idproduct: id},
+      success: function (result){
+        console.log(result);
+        $("#remove-group-product").hide();
+        $("body").removeClass("dis-content");
+        $("#product-table").DataTable().ajax.reload();
+      }
+    }
+    );
+  })
+  $("#remove-cancel-product").click(function(){
+    $("#remove-group-product").hide();
+    $("body").removeClass("dis-content");
+  })
+}
+
+//delete button table Product--------------------------------------------------------------------------------
+function editProduct(id,product){
+  $("body").addClass("dis-content");
+  $("#success-product").text("Sửa");
+  $("#group-product").attr("option", "edit");
+  $("#group-product").show();
+  $("#group-product").attr("idproduct",id);
+  $.ajax({
+    url: "./../Admin/getProductById",
+    type: "post",
+    dataType: "text",
+    data: {id: id},
+    success: function(result){
+      let product  = JSON.parse(result);
+      $("#name-product").val(product.productname);
+      $("#price-product").val(product.productprice);
+      $("#quantity-product").val(product.productquantity);
+      $("#description-product").val(product.productdescription);
+      $("#other-product").val(product.productother);
+// đổ dữ liệu ra select
+      $.ajax({
+        url:"./../Admin/AjaxCategory",
+        type: "post",
+        dataType: "text",
+        success: function(result){
+          let data = JSON.parse(result);
+          $.each(data, function (i, data) {
+            if(data.category == product.category){
+              $("#seclect-category").append('<option selected value="'+ data.id +'">'+ data.category +'</option>' );
+            }else{
+              $("#seclect-category").append($("<option>", {
+                  value: data.id,
+                  text : data.category
+              }));
+            }
+            });
+        }
+        });
+    }
+  }
+  );
+
+}
+//xử lý sự kiến button hủy sửa product
+$("#cancel-product").click(function(){
+  $("#group-product").hide();
+  $("body").removeClass("dis-content");
+});
+
+//xử lý sự kiến button sửa product
+$("#success-product").click(function(){
+  let action = $("#group-product").attr("option");
+  if(action == "edit"){
+    let file = $("#image-product")[0].files[0];
+    let form = new FormData();
+    form.append("file",file);
+    let id = $("#group-product").attr("idproduct");
+    let name = $("#name-product").val();
+    let price = $("#price-product").val();
+    let quantity = $("#quantity-product").val();
+    let description = $("#description-product").val();
+    let other = $("#other-product").val();
+    let idcategory = $("#seclect-category option").filter(':selected').val();
+    form.append("id",id);
+    form.append("name",name);
+    form.append("price",price);
+    form.append("quantity",quantity);
+    form.append("description",description);
+    form.append("other",other);
+    form.append("idcategory",idcategory);
+    $.ajax({
+      url: "./../Admin/editProduct",
+      type: "POST",
+      processData: false,
+      mimeType: "multipart/form-data",
+      contentType: false,
+      data: form,
+      success: function (result){
+      console.log(result);
+      $("#group-product").hide();
+      $("body").removeClass("dis-content");
+      $("#product-table").DataTable().ajax.reload();
+      }
+    }
+    );
+  }
+
+})
