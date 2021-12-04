@@ -12,10 +12,11 @@ div .category-content, div .product-content{
   min-width: 200px;
   max-width: 300px;
   height: auto;
-  position: absolute;
+  position: fixed;
   left: 50%;
-  top: 20px;
+  top: 50%;
   transform: translateX(-50%);
+  transform: translateY(-50%);
   z-index: 1;
   border: 1px solid #007bff;
   border-radius: 4px;
@@ -94,10 +95,11 @@ div .category-content, div .product-content{
   min-width: 200px;
   max-width: 300px;
   height: auto;
-  position: absolute;
+  position: fixed;
   left: 50%;
-  top: 20px;
+  top: 50%;
   transform: translateX(-50%);
+  transform: translateY(-50%);
   z-index: 1;
   border: 1px solid #007bff;
   border-radius: 4px;
@@ -268,11 +270,12 @@ div .category-content, div .product-content{
   min-width: 200px;
   max-width: 300px;
   height: auto;
-  position: absolute;
+  position: fixed;
   left: 50%;
-  top: 50px;
+  top: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  transform: translateY(-50%);
+  z-index: 5;
   border: 1px solid #007bff;
   border-radius: 4px;
   display: none;
@@ -316,16 +319,17 @@ div .category-content, div .product-content{
   width: 60%;
   min-width: 300px;
   max-width: 800px;
-  height: auto;
+  height: 80%;
   position: fixed;
   left: 50%;
-  top: 10%;
+  top: 15%;
   transform: translateX(-50%);
   z-index: 5;
   border: 1px solid #007bff;
   border-radius: 4px;
   display: none;
   pointer-events: auto;
+  overflow-y: scroll;
 }
 .title-product{
   font-weight: bold;
@@ -486,4 +490,24 @@ transition: 0.25s ease;
   width: 150px;
   border: 1px #007bff solid;
   border-radius: 10px;
+}
+.admin-alert{
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px;
+  height: auto;
+  position: fixed;
+  left: 30%;
+  top: 15%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: auto;
+  display: none;
+}
+.error-alert{
+  color: red;
+}
+.success-alert{
+  color: #007bff;
 }

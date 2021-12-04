@@ -47,7 +47,10 @@
     <label class="label-other">other</label>
   </div>
     <div class="error-product">
-      <p id="error-product"></p>
+      <p id="error-name"></p>
+      <p id="error-price"></p>
+      <p id="error-quantity"></p>
+      <p id="error-image"></p>
     </div>
     <div class="action-product">
       <button class="btn btn-outline-success btn-add" id="success-product" type="button" name="button">Thêm</button>

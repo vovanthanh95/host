@@ -70,9 +70,9 @@ class AdminAjax extends DB
         $qr = "SELECT * FROM category WHERE category = '$name'";
         $result = mysqli_query($this->conn, $qr);
         if (mysqli_num_rows($result) > 0) {
-            echo "danh mục đã tồn tại";
+            echo "0";
         } else {
-            echo "danh mục hợp lệ";
+            echo "1";
         }
         mysqli_close($this->conn);
     }
@@ -102,12 +102,10 @@ class AdminAjax extends DB
       $result = mysqli_query($this->conn, $qr);
       $row = $result->fetch_assoc();
       $id = $row['MAX(id)'];
-      var_dump($id);
       if($id == NULL){
         $qr = "ALTER TABLE product AUTO_INCREMENT = 1";
         $r = mysqli_query($this->conn, $qr);
         $id = 0;
-        var_dump($r);
       }
 
       $ext = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
@@ -120,23 +118,22 @@ class AdminAjax extends DB
       $productimage = ($id+1).".".$ext;
       $productother = $_POST["other"];
       $qr2 = "INSERT INTO `product` (`id`, `productname`, `productprice`, `productcategory`, `productquantity`, `productdescription`, `productimage`, `productother`) VALUES (NULL, '$productname', '$productprice', '$productcategory', '$productquantity','$productdescription', '$productimage', '$productother')";
-      echo $qr2;
+
       $result2 = mysqli_query($this->conn, $qr2);
-      var_dump($result2);
       if(isset($_FILES['file'])) {
                     $path= "./../mvc/public/images/products/".++$id.".".$ext;
                     $flag = move_uploaded_file($_FILES["file"]["tmp_name"],$path);
                     if($flag && $result2) {
                       echo "thêm thành công";
+                    }else{
+                      echo "thêm thất bại";
                     }
-                    return $flag;
                 }
     }
 
     public function deleteProduct($idproduct)
     {
         $qr ="DELETE FROM product WHERE id = $idproduct";
-        echo $qr;
         $result = mysqli_query($this->conn, $qr);
         $removeimg = unlink("./../mvc/public/images/products/".$idproduct.".jpg");
         if ($result && $removeimg) {
@@ -175,5 +172,18 @@ class AdminAjax extends DB
       }else{
         echo "thay đổi thất bại";
       }
+    }
+
+    //check products name ajax
+    public function checkNameProduct($name)
+    {
+        $qr = "SELECT * FROM product WHERE productname = '$name'";
+        $result = mysqli_query($this->conn, $qr);
+        if (mysqli_num_rows($result) > 0) {
+            echo "0";
+        } else {
+            echo "1";
+        }
+        mysqli_close($this->conn);
     }
 }

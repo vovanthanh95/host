@@ -28,6 +28,9 @@
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
+    <div class="alert alert alert-primary admin-alert" id="admin-alert">
+        <p class="alert-content" id="alert-content">thông báo</p>
+    </div>
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
@@ -193,6 +196,14 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                 <a href="/mvc/Admin/Users" class="nav-link">
+                   <i class="fas fa-users"></i>
+                   <p>
+                     Quản lý Thành Viên
+                   </p>
+                 </a>
+               </li>
             <li class="nav-item">
               <a href="/mvc/Admin/Category" class="nav-link">
                 <i class="far fa-folder"></i>
@@ -206,6 +217,14 @@
                 <i class="fas fa-mobile-alt"></i>
                 <p>
                   Quản lý sản phẩm
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/mvc/Admin/Bills" class="nav-link">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <p>
+                  Quản lý Đơn Hàng
                 </p>
               </a>
             </li>

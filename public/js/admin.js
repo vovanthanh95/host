@@ -55,7 +55,9 @@ t.on( 'order.dt search.dt', function () {
 });
 
 //edit button table Category--------------------------------------------------------------------------
+let idproduct = 0;
 function editCategory(id, name){
+  idproduct = id;
   $("#edit-group-category").show();
   $("#edit-name-category").val(name);
   $("#edit-name-category").attr("idrow",id);
@@ -65,18 +67,26 @@ function editCategory(id, name){
 
 //delete button table Category--------------------------------------------------------------------------------
 function deleteCategory(id,category){
+  idproduct = id;
   $("#remove-group-category").show();
   $("body").addClass("dis-content");
   $("#remove-content").text('bạn có muốn xóa ' + category + ' không');
+
+}
+$(document).ready(function(){
   $("#remove-success-category").click(function(){
     $.ajax({
       url: "./../Admin/deleteCategory",
       type: "post",
       datatype: "text",
-      data: {idcategory: id},
+      data: {idcategory: idproduct},
       success: function (result){
         $("#remove-group-category").hide();
         $("body").removeClass("dis-content");
+        $("#admin-alert").text(result);
+        console.log("aa");
+        $("#admin-alert").show();
+        $("#admin-alert").toggle(3000);
         $("#category-table").DataTable().ajax.reload();
       }
     }
@@ -86,21 +96,19 @@ function deleteCategory(id,category){
     $("#remove-group-category").hide();
     $("body").removeClass("dis-content");
   })
-}
+});
 
 //-----------------------------------------------------------------------------------
 $(document).ready(function(){
   //button add category click
 $("#btn-add-category").click(function(){
   $("#add-group-category").show();
-  $("#btn-add-category").hide();
   $("body").addClass("dis-content");
 })
 
 //button cancel on form category onclick-----------------------------------------------------------------
 $("#cancel-category").click(function(){
   $("#add-group-category").hide();
-  $("#btn-add-category").show();
   $("body").removeClass("dis-content");
 })
 
@@ -114,7 +122,10 @@ $("#success-category").click(function(){
     data: {name_category: name},
     success: function(result){
       $("#name-category").val("")
-      $("#add-error").text(result);
+      $("#add-error").text("");
+      $("#admin-alert").text(result);
+      $("#admin-alert").show();
+      $("#admin-alert").toggle(3000);
       $("#category-table").DataTable().ajax.reload();
     }
 }
@@ -131,8 +142,19 @@ $("#edit-name-category").keyup(
                      name : $("#edit-name-category").val()
                 },
                 success : function (result){
-                  console.log(result);
-                  $("#edit-error").text(result);
+                  if($("#edit-name-category").val()  == ""){
+                    $("#edit-error").removeClass("success-alert");
+                    $("#edit-error").addClass("error-alert");
+                    $("#edit-error").text("tên không được bỏ trống");
+                  }else if(result == "0"){
+                    $("#edit-error").removeClass("success-alert");
+                    $("#edit-error").addClass("error-alert");
+                    $("#edit-error").text("tên này đã tồn tại");
+                }else{
+                    $("#edit-error").removeClass("error-alert");
+                    $("#edit-error").addClass("success-alert");
+                    $("#edit-error").text("có thể dùng tên này");
+                }
                 }
             });
         }
@@ -148,8 +170,14 @@ $("#edit-success-category").click(function(){
     data: {name_category: name, id: id},
     success: function(result){
       $("#edit-name-category").val("")
+      $("#edit-error").text("");
+      $("body").removeClass("dis-content");
+      $("#edit-group-category").toggle();
+      $("#admin-alert").text(result);
+      $("#admin-alert").show();
+      $("#admin-alert").toggle(3000);
       $("#category-table").DataTable().ajax.reload();
-      $("#edit-error").text(result);
+
     }
 }
   );
@@ -171,8 +199,20 @@ $("#name-category").keyup(
                      name : $("#name-category").val()
                 },
                 success : function (result){
-                  console.log(result);
-                  $("#add-error").text(result);
+                  if($("#name-category").val() == ""){
+                    $("#add-error").removeClass("success-alert");
+                    $("#add-error").addClass("error-alert");
+                    $("#add-error").text("không được để trống");
+                  }else if(result == "0"){
+                    $("#add-error").removeClass("success-alert");
+                    $("#add-error").addClass("error-alert");
+                    $("#add-error").text("tên này đã tồn tại");
+                  }else{
+                    $("#add-error").removeClass("error-alert");
+                    $("#add-error").addClass("success-alert");
+                    $("#add-error").text("tên hợp lệ");
+                  }
+
                 }
             });
         }
@@ -205,6 +245,7 @@ $("#login-pass").click(function(){
 //load data table product---------------------------------------------------
   var product = $("#product-table").DataTable({
     "scrollX": false,
+    "responsive": true,
     "ajax": {
             "url": "./../Admin/AjaxProduct",
             "dataSrc": ""
@@ -268,6 +309,7 @@ $("#btn-add-product").click(function(){
     type: "post",
     dataType: "text",
     success: function(result){
+      $("#seclect-category").empty();
       let data = JSON.parse(result);
       $.each(data, function (i, data) {
     $("#seclect-category").append($("<option>", {
@@ -306,7 +348,9 @@ $("#success-product").click(function(){
                 contentType: false,
                 data: form,
                 success: function (result) {
-                    console.log(result);
+                    $("#admin-alert").text(result);
+                    $("#admin-alert").show();
+                    $("#admin-alert").toggle(3000);
                     $("#group-product").hide();
                     $("#product-table").DataTable().ajax.reload();
                 },
@@ -338,9 +382,11 @@ function deleteProduct(id,product){
       datatype: "text",
       data: {idproduct: id},
       success: function (result){
-        console.log(result);
         $("#remove-group-product").hide();
         $("body").removeClass("dis-content");
+        $("#admin-alert").text(result);
+        $("#admin-alert").show();
+        $("#admin-alert").toggle(3000);
         $("#product-table").DataTable().ajax.reload();
       }
     }
@@ -372,6 +418,7 @@ function editProduct(id,product){
       $("#description-product").val(product.productdescription);
       $("#other-product").val(product.productother);
 // đổ dữ liệu ra select
+      $("#seclect-category").empty();
       $.ajax({
         url:"./../Admin/AjaxCategory",
         type: "post",
@@ -433,6 +480,9 @@ $("#success-product").click(function(){
       console.log(result);
       $("#group-product").hide();
       $("body").removeClass("dis-content");
+      $("#admin-alert").text(result);
+      $("#admin-alert").show();
+      $("#admin-alert").toggle(3000);
       $("#product-table").DataTable().ajax.reload();
       }
     }
@@ -440,3 +490,66 @@ $("#success-product").click(function(){
   }
 
 })
+//xữ lý validate
+$(document).ready(function(){
+  $("#name-product").keyup(function(){
+    let name = $("#name-product").val();
+    $.ajax({
+      url: "./../Admin/checkNameProduct",
+      type: "post",
+      dataType: "text",
+      data: {name: name},
+      success: function(result){
+        if(name  == ""){
+          $("#error-name").removeClass("success-alert");
+          $("#error-name").addClass("error-alert");
+          $("#error-name").text("tên không được bỏ trống");
+        }else if(result == "0"){
+          $("#error-name").removeClass("success-alert");
+          $("#error-name").addClass("error-alert");
+          $("#error-name").text("tên này đã tồn tại");
+      }else{
+          $("#error-name").removeClass("error-alert");
+          $("#error-name").addClass("success-alert");
+          $("#error-name").text("có thể dùng tên này");
+      }
+      }
+    });
+  });
+
+  $("#price-product").keyup(function(){
+    let price = $("#price-product").val();
+    if(/\D/.test(price)){
+          $("#error-price").removeClass("success-alert");
+          $("#error-price").addClass("error-alert");
+          $("#error-price").text("ko phải số");
+    }else if(price  == ""){
+        $("#error-price").removeClass("success-alert");
+        $("#error-price").addClass("error-alert");
+        $("#error-price").text("không để trống");
+    }else{
+        $("#error-price").removeClass("error-alert");
+        $("#error-price").addClass("success-alert");
+        $("#error-price").text("giá trị hợp lệ");
+    }
+
+  });
+
+  $("#quantity-product").keyup(function(){
+    let price = $("#quantity-product").val();
+    if(/\D/.test(price)){
+          $("#error-quantity").removeClass("success-alert");
+          $("#error-quantity").addClass("error-alert");
+          $("#error-quantity").text("ko phải số");
+    }else if(price  == ""){
+        $("#error-quantity").removeClass("success-alert");
+        $("#error-quantity").addClass("error-alert");
+        $("#error-quantity").text("không để trống");
+    }else{
+        $("#error-quantity").removeClass("error-alert");
+        $("#error-quantity").addClass("success-alert");
+        $("#error-quantity").text("giá trị hợp lệ");
+    }
+
+  });
+});

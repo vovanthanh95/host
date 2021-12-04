@@ -9,6 +9,12 @@ class Admin extends Controller
     {
         $b = $this->view("Admin", ["content"=> "AdminLogin"]);
     }
+    public function Bills(){
+      $b = $this->view("Admin", ["content"=> "AdminBills"]);
+    }
+    public function Users(){
+      $b = $this->view("Admin", ["content"=> "AdminUsers"]);
+    }
 
     public function Category()
     {
@@ -93,5 +99,11 @@ class Admin extends Controller
     public function getProductById(){
       $a = $this->model("AdminAjax");
       $a->getProductById($_POST["id"]);
+    }
+    //ajax check name product
+    public function checkNameProduct()
+    {
+        $a = $this->model("AdminAjax");
+        $a->checkNameProduct($_POST["name"]);
     }
 }
