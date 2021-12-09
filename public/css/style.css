@@ -33,3 +33,37 @@ nav {
       text-decoration: none;
       color: white;
       margin: 0px 5px; }
+
+div.content {
+  border: 1px solid #007bff; }
+
+ul.list-products {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px; }
+  ul.list-products li {
+    flex-basis: 25%;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    padding: 0px 5px; }
+    ul.list-products li div.item {
+      border: 1px solid #007bff;
+      border-radius: 10px;
+      text-align: center; }
+      ul.list-products li div.item a {
+        text-decoration: none; }
+        ul.list-products li div.item a .name-product {
+          color: #dc3545;
+          margin-top: 5px;
+          background: #9ff9d4;
+          margin-bottom: 0px; }
+      ul.list-products li div.item .info {
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        border-radius: 0 0 10px 10px; }
+        ul.list-products li div.item .info p {
+          margin-bottom: 0px;
+          color: white; }
+    ul.list-products li img {
+      max-width: 100%;
+      border-radius: 10px; }

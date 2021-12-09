@@ -1,0 +1,38 @@
+ul.list-products{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  li{
+    flex-basis: 25%;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    padding: 0px 5px;
+    div.item{
+      border: 1px solid $cl-bd;
+      border-radius: 10px;
+      text-align: center;
+      a{
+        text-decoration: none;
+        .name-product{
+          color: #dc3545;
+          margin-top: 5px;
+          background: #9ff9d4;
+          margin-bottom: 0px;
+        }
+      }
+      .info{
+        background-color: $cl-bg;
+        border: 1px solid $cl-bd;
+        border-radius: 0 0 10px 10px;
+        p{
+          margin-bottom: 0px;
+          color: white;
+        }
+      }
+    }
+    img{
+      max-width: 100%;
+      border-radius: 10px;
+    }
+  }
+}

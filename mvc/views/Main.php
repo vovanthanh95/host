@@ -11,10 +11,11 @@
 
 <body>
   <div class="container">
+    <!-- menu -->
     <div class="row">
       <nav class="col-sm">
         <a href= "" class="logo">QTI</a>
-        <ul class="xx">
+        <ul class="">
           <li class=""><a class="" href="/mvc/home">Home</a></li>
           <li class=""><a class="" href="/mvc/home">About</a></li>
           <li class=""><a class="" href="/mvc/home">Menu</a></li>
@@ -26,9 +27,9 @@
       </div>
       </nav>
       <div class="row">
-        <div class="col-md content">
+        <div class="content">
           <section>
-
+            <?php require_once "./mvc/views/page/listproducts.php" ?>
           </section>
         </div>
       </div>
@@ -38,6 +39,8 @@
         </p>
       </footer>
     </div>
+    <!-- list products -->
+
   </div>
   <script language="JavaScript" type="text/javascript" src="./public/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
