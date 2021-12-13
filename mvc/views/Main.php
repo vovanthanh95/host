@@ -12,31 +12,39 @@
 <body>
   <div class="container">
     <!-- menu -->
-    <div class="row">
-      <nav class="col-sm">
-        <a href= "" class="logo">QTI</a>
+    <div class="">
+      <div class="banner">
+        <img src="./public/images/header-850x266.jpg" alt="">
+      </div>
+      <nav class="nav-main">
         <ul class="">
           <li class=""><a class="" href="/mvc/home">Home</a></li>
           <li class=""><a class="" href="/mvc/home">About</a></li>
           <li class=""><a class="" href="/mvc/home">Menu</a></li>
-          <li class=""><a class="" href="/mvc/home">Loin</a></li>
+          <li class=""><a class="" href="/mvc/home">Login</a></li>
+          <li class=""><a class="" href="/mvc/home">Menu</a></li>
+          <li class=""><a class="" href="/mvc/home">Login</a></li>
         </ul>
         <div class="member">
         <a class="login" href="">Đăng nhập</a>
         <a class="register" href="">Đăng ký</a>
       </div>
       </nav>
-      <div class="row">
+      <div class="">
         <div class="content">
           <section>
             <?php require_once "./mvc/views/page/listproducts.php" ?>
           </section>
         </div>
       </div>
-      <footer class="ft col-md-12">
-        <p>Bản quyền<br />
-          <a href="#">Liên hệ !</a>
+      <footer class="">
+        <p>Trụ sở chính </br>
+          Địa chỉ: Phòng 1610, tòa nhà S106, Khu đô thị Vinhomes Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội<br />
+          Điện thoại: 0988.56.59.56 - 0963.239.222 - em Minh <br />
+          Email: abc@zzz.com.vn</br>
         </p>
+        <a href="#">Liên hệ 0909090909</a>
+
       </footer>
     </div>
     <!-- list products -->

@@ -5,34 +5,40 @@
   text-decoration: none;
   color: black; }
 
-nav {
+.banner img {
+  margin-top: 10px;
+  height: 266px;
+  width: 100%; }
+
+.nav-main {
   background: #007bff;
   display: flex;
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  justify-content: space-between; }
-  nav > .logo {
-    color: yellow;
-    font-size: 40px;
-    font-family: fantasy;
-    text-decoration: none; }
-  nav ul {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  min-height: 50px; }
+  .nav-main ul {
     display: flex;
-    margin-right: 30%; }
-    nav ul li a {
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 0; }
+    .nav-main ul li a {
       display: block;
       padding: 0px 15px;
       color: white;
       text-decoration: none; }
-      nav ul li a:hover {
-        background: red; }
-  nav .member {
-    display: flex; }
-    nav .member a {
+      .nav-main ul li a:hover {
+        text-decoration: underline; }
+  .nav-main .member {
+    margin-left: auto;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap; }
+    .nav-main .member a {
       text-decoration: none;
       color: white;
-      margin: 0px 5px; }
+      margin: 0px 15px; }
+      .nav-main .member a:hover {
+        text-decoration: underline; }
 
 div.content {
   border: 1px solid #007bff; }
@@ -40,9 +46,10 @@ div.content {
 ul.list-products {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20px; }
+  margin-top: 20px;
+  justify-content: space-around; }
   ul.list-products li {
-    flex-basis: 25%;
+    flex-basis: 22%;
     margin-bottom: 15px;
     margin-top: 5px;
     padding: 0px 5px; }
@@ -55,7 +62,7 @@ ul.list-products {
         ul.list-products li div.item a .name-product {
           color: #dc3545;
           margin-top: 5px;
-          background: #9ff9d4;
+          background: #f9f29f;
           margin-bottom: 0px; }
       ul.list-products li div.item .info {
         background-color: #007bff;
@@ -66,4 +73,17 @@ ul.list-products {
           color: white; }
     ul.list-products li img {
       max-width: 100%;
-      border-radius: 10px; }
+      border-radius: 10px;
+      margin-top: 5px; }
+
+footer {
+  background: #007bff;
+  margin-bottom: 20px; }
+  footer p {
+    color: white;
+    margin-left: 20px; }
+  footer a {
+    display: inline-block;
+    color: white;
+    margin-left: 20px;
+    margin-bottom: 20px; }
